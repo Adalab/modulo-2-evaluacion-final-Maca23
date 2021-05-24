@@ -1,7 +1,96 @@
-.cards {
-    background-color: red;
+* {
+  text-decoration: none;
+  list-style: none;
 }
 
+h1 {
+    text-align: center;
+  }
+
+.input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.btn {
+    background-color: rgb(141, 16, 68);
+    color: white;
+    width: 80px;
+    height: 23px;
+    cursor: pointer;
+}
+
+.series {
+    display: flex;
+    flex-direction: row;
+}
+
+.series-fav {
+    display: flex;
+    flex-direction: row;
+}
+
+.cards {
+  background-color: pink;
+  margin: 10px;
+  width: 270px;
+  height: 380px;
+  cursor: pointer;
+}
+
+.cards-img {
+    margin: 15px 30px;
+}
+
+.cards-title {
+    text-align: center;
+    transform: translate(0, -20px);
+    font-size: 20px;
+    color: rgb(141, 16, 68);
+}
+
+.cards-fav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.cards-img-fav {
+    width: 140px;
+    height: 195px;
+    margin-left: 8px;
+   
+  }
+
+.cards-title-fav {
+    text-align: center;
+    font-size: 15px;
+}
+
+.close {
+    margin-left: 145px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    width: 15px;
+     height: 15px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+
 .seriescolor {
-    background-color: blue;
+  background-color: blue;
+}
+
+
+.btn-reset {
+    width: 60px;
+    cursor: pointer;
 }
