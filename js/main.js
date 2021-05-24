@@ -1,11 +1,11 @@
 "use strict";
 
 let arraySeries = [];
+let favorites = [];
+
 const searchBtn = document.querySelector(".js-search-btn");
 const searchInput = document.querySelector(".js-search-input");
 const ulSeries = document.querySelector(".js-series");
-
-let favorites = [];
 const seriesFav = document.querySelector(".js-series-fav");
 
 //SEARCH
@@ -21,7 +21,6 @@ function searchSeries() {
       });
 
       paintSeries(arraySeries);
-      addEventListenerToCards();
     });
 }
 
@@ -31,9 +30,9 @@ function getHtmlCode(series) {
   for (const serie of series) {
     htmlCode += `<li class="cards js-cards" id= "${serie.id}">`;
     if (serie.image === null) {
-      htmlCode += `<img class="cards-content-img" src="${"https://via.placeholder.com/210x295/ffffff/666666/?text=TV"}" alt="" />`;
+      htmlCode += `<img class="cards-content-img" src="${"https://via.placeholder.com/210x295/ffffff/666666/?text=TV"}" />`;
     } else {
-      htmlCode += `<img class="cards-img" src="${serie.image.medium}" alt="" />`;
+      htmlCode += `<img class="cards-img" src="${serie.image.medium}" />`;
     }
     htmlCode += `<h2 class="cards-title">${serie.name}</h2>`;
     htmlCode += `</li>`;
@@ -42,12 +41,11 @@ function getHtmlCode(series) {
   return htmlCode;
 }
 
-function paintSeries() {
+function paintSeries(arraySeries) {
   let htmlCode = getHtmlCode(arraySeries);
   ulSeries.innerHTML = htmlCode;
+  addEventListenerToCards();
 }
-
-searchBtn.addEventListener("click", searchSeries);
 
 function addEventListenerToCards() {
   const allCards = document.querySelectorAll(".js-cards");
@@ -55,29 +53,40 @@ function addEventListenerToCards() {
     cards.addEventListener("click", handleFavList);
   }
 }
+searchBtn.addEventListener("click", searchSeries);
+addEventListenerToCards() 
 
 //Una vez aparecen los resultados de búsqueda, la usuaria puede indicar cuáles son nuestras series favoritas
 function handleFavList(ev) {
   const upDateFav = ev.currentTarget; //para coger toda la info, target es solo para coger info en concreto
   let favId = ev.currentTarget.id;
   const showFav = favorites.find((element) => element.id === parseInt(favId));
-  if (showFav === null) {
+  if (showFav == null) {
     const selectedSeriesFav = arraySeries.find(
       (element) => element.id === parseInt(favId)
     );
     favorites.push(selectedSeriesFav);
-    //upDateFav.classList.remove(la clase)
-    //upDateFav.classList.add(la clase)
+    upDateFav.classList.remove("cards");
+    upDateFav.classList.add("seriescolor");
   } else {
     let selectedSeriesFav2 = favorites.indexOf(showFav);
     favorites.splice(selectedSeriesFav2, 1);
-    //upDateFav.classList.remove(la clase)
-    //upDateFav.classList.add(la clase)
+    upDateFav.classList.add("cards");
+    upDateFav.classList.remove("seriescolor");
+  
   }
+  localStorage.setItem('series', JSON.stringify(favorites));
   paintSeriesFav(favorites);
 }
 
-function paintSeriesFav() {
+function paintSeriesFav(favorites) {
   let htmlCode = getHtmlCode(favorites);
   seriesFav.innerHTML = htmlCode;
 }
+
+const saveSeriesFav = JSON.parse(localStorage.getItem('series'));
+if (saveSeriesFav) {
+    favorites = saveSeriesFav;
+};
+
+paintSeriesFav(favorites);
