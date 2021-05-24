@@ -7,6 +7,7 @@ const searchBtn = document.querySelector(".js-search-btn");
 const searchInput = document.querySelector(".js-search-input");
 const ulSeries = document.querySelector(".js-series");
 const seriesFav = document.querySelector(".js-series-fav");
+const resetBtn = document.querySelector('.js-reset-btn');
 
 function searchSeries() {
   arraySeries = [];
@@ -70,11 +71,14 @@ function handleListClose(event) {
   addEventListenerClose();
 }
 
-function reset() {
+
+function handleReset() {
   favorites = [];
   seriesFav.innerHTML = "";
-  const resetBtn = document.querySelector('.js-reset-btn');
 }
+
+resetBtn.addEventListener('click', handleReset);
+
 
 function paintSeries(arraySeries) {
   let htmlCode = getHtmlCode(arraySeries);
