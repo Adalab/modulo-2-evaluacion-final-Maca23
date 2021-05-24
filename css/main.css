@@ -94,6 +94,13 @@ h1 {
   background-color: rgb(141, 16, 68);
 }
 
+.pcolor {
+  text-align: center;
+  transform: translate(0, -20px);
+  font-size: 20px;
+  color: white;
+}
+
 .btn-reset {
   width: 60px;
   cursor: pointer;

@@ -7,7 +7,7 @@ const searchBtn = document.querySelector(".js-search-btn");
 const searchInput = document.querySelector(".js-search-input");
 const ulSeries = document.querySelector(".js-series");
 const seriesFav = document.querySelector(".js-series-fav");
-const resetBtn = document.querySelector('.js-reset-btn');
+const resetBtn = document.querySelector(".js-reset-btn");
 
 function searchSeries() {
   arraySeries = [];
@@ -56,29 +56,13 @@ function getHtmlCodeFav(favorites) {
   return htmlCode;
 }
 
-function addEventListenerClose() {
-  const close = document.querySelectorAll(".js-close");
-  for (const listClose of close) {
-    listClose.addEventListener("click", handleListClose);
-  }
-}
-
-function handleListClose(event) {
-  let id = parseInt(event.currentTarget.id);
-  let positionId = favorites.findIndex((fav) => id === fav.id);
-  favorites.splice(positionId, 1);
-  paintSeriesFav(favorites);
-  addEventListenerClose();
-}
-
-
 function handleReset() {
   favorites = [];
   seriesFav.innerHTML = "";
+  paintSeries(arraySeries);
 }
 
-resetBtn.addEventListener('click', handleReset);
-
+resetBtn.addEventListener("click", handleReset);
 
 function paintSeries(arraySeries) {
   let htmlCode = getHtmlCode(arraySeries);
@@ -132,3 +116,23 @@ function getLocalStorage() {
   }
 }
 getLocalStorage();
+
+function removeItem(event) {
+  let id = parseInt(event.currentTarget.id);
+  const fav = favorites.find((element) => element.id === parseInt(id));
+  removeFavoriteList(fav);
+  paintSeriesFav(favorites);
+  paintSeries(arraySeries);
+  localStorage.setItem("series", JSON.stringify(favorites));
+}
+function removeFavoriteList(element) {
+  let i = favorites.indexOf(element);
+  favorites.splice(i, 1);
+}
+
+function addEventListenerClose() {
+  const close = document.querySelectorAll(".js-close");
+  for (const listClose of close) {
+    listClose.addEventListener("click", removeItem);
+  }
+}
