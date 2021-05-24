@@ -1,6 +1,7 @@
 * {
   text-decoration: none;
   list-style: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
@@ -11,6 +12,8 @@ h1 {
   border-top: none;
   border-left: none;
   border-right: none;
+  width: 210px;
+  height: 20px;
 }
 
 .btn {
@@ -31,7 +34,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.series-fav {
+.series-favorites {
   display: flex;
   flex-direction: column;
 }
@@ -44,8 +47,9 @@ h1 {
   cursor: pointer;
 }
 
-.cards-img {
-  margin: 15px 30px;
+.cards-img,
+.cards-content-img {
+  margin: 18px 30px;
 }
 
 .cards-title {
@@ -64,11 +68,9 @@ h1 {
 .cards-img-fav {
   width: 140px;
   height: 195px;
-  margin-left: 8px;
 }
 
 .cards-title-fav {
-  text-align: center;
   font-size: 15px;
 }
 
@@ -85,10 +87,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translate(0, -240px);
 }
 
 .seriescolor {
-  background-color: blue;
+  background-color: rgb(141, 16, 68);
 }
 
 .btn-reset {
