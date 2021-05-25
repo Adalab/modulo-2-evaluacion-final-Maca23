@@ -1,4 +1,4 @@
-###Funcionamiento de la web
+Funcionamiento de la web
 
 1. Búsqueda: Se escribe en el input vacío creado para la búsqueda y al hacer click con el ratón sobre Search, la aplicación se conectará al API abierto de TVMaze para búsqueda de series. Obtenemos como respuesta un listado de elementos filtrados según lo que hayamos escrito en el input.
 
