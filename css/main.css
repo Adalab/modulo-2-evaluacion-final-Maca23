@@ -14,6 +14,7 @@ h1 {
   border-right: none;
   width: 210px;
   height: 20px;
+  padding-left: 7px;
 }
 
 .btn {
@@ -84,20 +85,16 @@ h1 {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  line-height: 12px;
   transform: translate(0, -240px);
 }
 
 .seriescolor {
-  background-color: rgb(141, 16, 68);
+  background-color: rgb(141, 16, 68, 0.7);
 }
 
-.pcolor {
-  text-align: center;
-  transform: translate(0, -20px);
-  font-size: 20px;
+.seriescolor .cards-title {
   color: white;
 }
 
@@ -105,3 +102,4 @@ h1 {
   width: 60px;
   cursor: pointer;
 }
+
