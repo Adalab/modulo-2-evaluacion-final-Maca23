@@ -41,6 +41,7 @@ function getHtmlCode(series) {
       htmlCode += `<img class="cards-img" src="${serie.image.medium}" />`;
     }
     htmlCode += `<h2 class="cards-title">${serie.name}</h2>`;
+    htmlCode += `<p>${serie.genres}</p>`;
     htmlCode += `</li>`;
   }
   return htmlCode;
@@ -97,11 +98,18 @@ addEventListenerToCards();
 function handleFavList(ev) {
   const upDateFav = ev.currentTarget; //para coger toda la info, target es solo para coger info en concreto
   let favId = ev.currentTarget.id;
+
+  const selectedSeriesFav = arraySeries.find(
+    (element) => element.id === parseInt(favId)
+  );
+  console.log(selectedSeriesFav.name);
+  
   const showFav = favorites.find((element) => element.id === parseInt(favId));
+  const selectedSeriesFav = arraySeries.find(
+    (element) => element.id === parseInt(favId)
+  );
+  console.log(selectedSeriesFav.name);
   if (showFav === undefined) {
-    const selectedSeriesFav = arraySeries.find(
-      (element) => element.id === parseInt(favId)
-    );
     favorites.push(selectedSeriesFav);
     upDateFav.classList.remove("cards");
     upDateFav.classList.add("seriescolor");
@@ -112,7 +120,7 @@ function handleFavList(ev) {
     upDateFav.classList.remove("seriescolor");
   }
   localStorage.setItem("series", JSON.stringify(favorites));
-  paintSeriesFav(favorites);
+  //paintSeriesFav(favorites);
   addEventListenerClose();
 }
 
@@ -120,7 +128,7 @@ function handleFavList(ev) {
 //FUNCIÓN PARA PINTAR MIS SERIES FAVORITAS
 function paintSeriesFav(favorites) {
   let htmlCode = getHtmlCodeFav(favorites);
-  seriesFav.innerHTML = htmlCode;
+  //seriesFav.innerHTML = htmlCode;
 }
 
 
